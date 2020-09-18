@@ -1,9 +1,9 @@
 package com.yulie.monsterhunter.service.api
 
 import com.google.gson.GsonBuilder
-import com.yulie.monsterhunter.service.util.Constans.Companion.BASE_URL
-import com.yulie.monsterhunter.service.util.Constans.Companion.DEBUG
-import com.yulie.monsterhunter.service.util.Constans.Companion.REQUEST_TIMEOUT_DURATION
+import com.yulie.monsterhunter.service.util.Constants.Companion.BASE_URL
+import com.yulie.monsterhunter.service.util.Constants.Companion.DEBUG
+import com.yulie.monsterhunter.service.util.Constants.Companion.REQUEST_TIMEOUT_DURATION
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
