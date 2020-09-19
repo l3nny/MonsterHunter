@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.yulie.monsterhunter.R
+import com.yulie.monsterhunter.view.apiList.ListViewModel
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        ListViewModel.getInstance().fetchList();
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

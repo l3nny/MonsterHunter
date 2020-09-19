@@ -20,6 +20,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -53,6 +54,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerview"
 
     //Android Jetpack reemplace anko
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycle_version"

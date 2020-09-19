@@ -37,9 +37,12 @@ object RetrofitBuilder {
         }
 
         return if (DEBUG) {
+            val httpLoggingInterceptor = HttpLoggingInterceptor()
             OkHttpClient.Builder()
                 .addInterceptor(interceptor)
-                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .addInterceptor(httpLoggingInterceptor.apply {
+                    httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+                })
                 .connectTimeout(REQUEST_TIMEOUT_DURATION.toLong(), TimeUnit.SECONDS)
                 .readTimeout(REQUEST_TIMEOUT_DURATION.toLong(), TimeUnit.SECONDS)
                 .writeTimeout(REQUEST_TIMEOUT_DURATION.toLong(), TimeUnit.SECONDS)
