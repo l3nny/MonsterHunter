@@ -22,7 +22,7 @@ class ApiListAdapter (private val apiListViewModel: ListViewModel) : RecyclerVie
         holder.setup(apiList[position])
     }
 
-    fun updateApiList(ApiList: List<Armor>) {
+    fun updateApiList(apiList: List<Armor>) {
         this.apiList = apiList
         notifyDataSetChanged()
     }
