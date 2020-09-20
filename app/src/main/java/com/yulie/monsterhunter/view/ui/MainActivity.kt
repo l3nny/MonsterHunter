@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.yulie.monsterhunter.R
-import com.yulie.monsterhunter.view.apiList.ListViewModel
+import com.yulie.monsterhunter.viewmodel.ListViewModel
 
 
 class MainActivity : AppCompatActivity() {

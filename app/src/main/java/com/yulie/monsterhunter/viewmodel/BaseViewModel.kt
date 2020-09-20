@@ -1,4 +1,4 @@
-package com.yulie.monsterhunter.view.callback
+package com.yulie.monsterhunter.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

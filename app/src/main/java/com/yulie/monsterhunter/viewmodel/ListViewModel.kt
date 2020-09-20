@@ -1,13 +1,12 @@
-package com.yulie.monsterhunter.view.apiList
+package com.yulie.monsterhunter.viewmodel
 
 
 import androidx.lifecycle.MutableLiveData
 import com.yulie.monsterhunter.service.api.ApiRequest
 import com.yulie.monsterhunter.service.model.Armor
-import com.yulie.monsterhunter.view.callback.BaseViewModel
 
 class ListViewModel : BaseViewModel() {
-    private val listLive = MutableLiveData<List<Armor>>()
+   val listLive = MutableLiveData<List<Armor>>()
 
     fun fetchList() {
         dataLoading.value = true
