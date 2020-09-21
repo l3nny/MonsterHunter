@@ -1,6 +1,8 @@
 package com.yulie.monsterhunter.view.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +34,24 @@ class ListFragment : Fragment() {
         viewDataBinding = FragmentListBinding.inflate(inflater, container, false).apply {
             viewmodel = ViewModelProvider(this@ListFragment).get(ListViewModel::class.java)
             setLifecycleOwner(viewLifecycleOwner)
+
+
+
+            filterArmor.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+                }
+                override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+                  adapter.filter.filter(charSequence.toString())
+
+                 //  adapter.getFilteredList(charSequence.toString())
+
+                }
+
+                override fun afterTextChanged(editable: Editable) {
+                }
+            })
+
+
         }
         return viewDataBinding.root
     }
@@ -50,7 +70,7 @@ class ListFragment : Fragment() {
 
 
     private fun setupObservers() {
-        viewDataBinding.viewmodel?.listLive?.observe(viewLifecycleOwner, Observer {
+         viewDataBinding.viewmodel?.listLive?.observe(viewLifecycleOwner, Observer {
             adapter.updateApiList(it)
         })
 
@@ -67,6 +87,11 @@ class ListFragment : Fragment() {
             repo_list_rv.layoutManager = layoutManager
             repo_list_rv.addItemDecoration(DividerItemDecoration(activity, layoutManager.orientation))
             repo_list_rv.adapter = adapter
+
+
+
+
+
         }
     }
 }

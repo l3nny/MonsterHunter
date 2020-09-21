@@ -6,6 +6,8 @@
 
         <import type="android.view.View" />
 
+        <import type="java.util.List" />
+
         <variable
             name="itemData"
             type="com.yulie.monsterhunter.service.model.Armor" />
@@ -16,10 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="@dimen/_10dp"
         android:background="@color/colorLight"
         android:orientation="horizontal"
-        android:padding="@dimen/_20dp"
-        android:layout_margin="@dimen/_10dp">
+        android:padding="@dimen/_10dp">
 
 
         <ImageView
@@ -42,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/_20dp"
+                android:layout_marginStart="@dimen/_10dp"
                 android:gravity="center_vertical"
                 android:text="@{itemData.name}"
                 android:textColor="@color/colorAccent"
@@ -60,14 +62,14 @@
                     android:id="@+id/item_rank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_35dp"
+                    android:layout_marginStart="@dimen/_10dp"
                     android:text="@{itemData.rank}"
                     android:textColor="@color/colorAccent" />
 
                 <ImageView
                     android:id="@+id/item_shield"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
+                    android:layout_width="@dimen/_20dp"
+                    android:layout_height="@dimen/_20dp"
                     android:layout_marginStart="@dimen/_35dp"
                     app:srcCompat="@drawable/ic_shield" />
 
@@ -80,12 +82,15 @@
                     android:textColor="@color/colorAccent" />
 
 
-                <ImageView
-                    android:id="@+id/item_decor"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
+                <LinearLayout
+                    android:id="@+id/item_decor_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_35dp"
-                    app:srcCompat="@drawable/ic_deco" />
+
+                    android:orientation="horizontal" />
+
+
             </LinearLayout>
         </LinearLayout>
 
