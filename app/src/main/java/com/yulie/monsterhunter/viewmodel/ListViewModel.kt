@@ -1,6 +1,5 @@
 package com.yulie.monsterhunter.viewmodel
 
-
 import androidx.lifecycle.MutableLiveData
 import com.yulie.monsterhunter.service.api.ApiRequest
 import com.yulie.monsterhunter.service.model.Armor

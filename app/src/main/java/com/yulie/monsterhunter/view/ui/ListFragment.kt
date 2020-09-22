@@ -7,18 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.yulie.monsterhunter.R
 import com.yulie.monsterhunter.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 import com.yulie.monsterhunter.databinding.FragmentListBinding
 import com.yulie.monsterhunter.view.adapter.ApiListAdapter
 import androidx.lifecycle.ViewModelProvider
-
 
 
 /**
@@ -34,8 +30,6 @@ class ListFragment : Fragment() {
         viewDataBinding = FragmentListBinding.inflate(inflater, container, false).apply {
             viewmodel = ViewModelProvider(this@ListFragment).get(ListViewModel::class.java)
             setLifecycleOwner(viewLifecycleOwner)
-
-
 
             filterArmor.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
@@ -62,9 +56,6 @@ class ListFragment : Fragment() {
         setupAdapter()
         setupObservers()
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
     }
 
 
@@ -86,11 +77,6 @@ class ListFragment : Fragment() {
             repo_list_rv.layoutManager = layoutManager
             repo_list_rv.addItemDecoration(DividerItemDecoration(activity, layoutManager.orientation))
             repo_list_rv.adapter = adapter
-
-
-
-
-
         }
     }
 }

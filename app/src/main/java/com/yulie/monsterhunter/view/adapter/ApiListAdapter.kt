@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-
 import androidx.recyclerview.widget.RecyclerView
 import com.yulie.monsterhunter.databinding.ListItemBinding
 import com.yulie.monsterhunter.service.model.Armor
@@ -23,7 +22,7 @@ class ApiListAdapter(private val apiListViewModel: ListViewModel) : RecyclerView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApiListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val dataBinding = ListItemBinding.inflate(inflater, parent, false)
-        return ApiListViewHolder(dataBinding, apiListViewModel)
+        return ApiListViewHolder(dataBinding)
     }
 
     override fun getItemCount() = apiList.size

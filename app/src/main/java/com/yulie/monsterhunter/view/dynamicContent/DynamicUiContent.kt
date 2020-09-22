@@ -1,11 +1,9 @@
 package com.yulie.monsterhunter.view.dynamicContent
 
 import android.content.Context
-import android.graphics.Color
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.view.marginStart
 import com.yulie.monsterhunter.R
 
 
