@@ -7,17 +7,17 @@ import retrofit2.Response
 
 class ApiRequest {
 
-    fun getList(onResult: (isSuccess: Boolean, response: List<Armor>?) -> Unit) {
+    fun getList(onResult: (isSuccess: Boolean, response: ArrayList<Armor>?) -> Unit) {
 
-        RetrofitBuilder.instance.getRepo().enqueue(object : Callback<List<Armor>> {
-            override fun onResponse(call: Call<List<Armor>>?, response: Response<List<Armor>>?) {
+        RetrofitBuilder.instance.getRepo().enqueue(object : Callback<ArrayList<Armor>> {
+            override fun onResponse(call: Call<ArrayList<Armor>>?, response: Response<ArrayList<Armor>>?) {
                 if (response != null && response.isSuccessful)
                     onResult(true, response.body()!!)
                 else
                     onResult(false, null)
             }
 
-            override fun onFailure(call: Call<List<Armor>>?, t: Throwable?) {
+            override fun onFailure(call: Call<ArrayList<Armor>>?, t: Throwable?) {
                 onResult(false, null)
             }
 

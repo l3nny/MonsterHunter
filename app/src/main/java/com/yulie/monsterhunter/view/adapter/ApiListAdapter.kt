@@ -1,11 +1,11 @@
 package com.yulie.monsterhunter.view.adapter
 
-import android.R
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import androidx.lifecycle.ViewModel
+
 
 import androidx.recyclerview.widget.RecyclerView
 import com.yulie.monsterhunter.databinding.ListItemBinding
@@ -15,8 +15,8 @@ import com.yulie.monsterhunter.viewmodel.ListViewModel
 
 class ApiListAdapter(private val apiListViewModel: ListViewModel) :
     RecyclerView.Adapter<ApiListViewHolder>(), Filterable {
-    var apiList: List<Armor> = emptyList()
-    var searchableList: List<Armor> = emptyList()
+    var apiList: ArrayList<Armor> = arrayListOf()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApiListViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -30,37 +30,34 @@ class ApiListAdapter(private val apiListViewModel: ListViewModel) :
         holder.setup(apiList[position])
     }
 
-    fun updateApiList(apiList: List<Armor>) {
+    fun updateApiList(apiList: ArrayList<Armor>) {
         this.apiList = apiList
         notifyDataSetChanged()
     }
 
 
     override fun getFilter(): Filter {
+
         return object : Filter() {
             private val filterResults = FilterResults()
+
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-              //  ListViewModel.getInstance().listLive.value
-                if (constraint.isNullOrBlank()) {
-                    searchableList.toMutableList().addAll(apiList)
+                val filterPattern = constraint.toString().toLowerCase().trim()
+
+                filterResults.values = if (constraint.isNullOrBlank()) {
+                    apiList
                 } else {
-                    val filterPattern = constraint.toString().toLowerCase().trim { it <= ' ' }
-                     for (item in 0..apiList.size) {
-                         if (apiList[item].name!!.toLowerCase().contains(filterPattern)) {
-                             searchableList.toMutableList().add(apiList[item])
-                         }
-                     }
+                    apiList.filter {
+                        it.name.toLowerCase().contains(filterPattern)
+                    }
                 }
-                return filterResults.also {
-                       it.values = searchableList
-                }
+                return filterResults
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                //  if (searchableList.isNullOrEmpty())
-                //     onNothingFound?.invoke()
-                notifyDataSetChanged()
 
+                apiList = filterResults.values as ArrayList<Armor>
+                notifyDataSetChanged()
             }
         }
     }

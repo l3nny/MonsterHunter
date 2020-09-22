@@ -9,7 +9,7 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("armor")
-    fun getRepo(): Call<List<Armor>>
+    fun getRepo(): Call<ArrayList<Armor>>
 
 }
 

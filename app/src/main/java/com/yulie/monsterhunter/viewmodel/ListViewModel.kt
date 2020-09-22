@@ -6,7 +6,7 @@ import com.yulie.monsterhunter.service.api.ApiRequest
 import com.yulie.monsterhunter.service.model.Armor
 
 class ListViewModel : BaseViewModel() {
-   val listLive = MutableLiveData<List<Armor>>()
+   val listLive = MutableLiveData<ArrayList<Armor>>()
 
     fun fetchList() {
         dataLoading.value = true

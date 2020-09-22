@@ -5,25 +5,25 @@ import com.google.gson.annotations.SerializedName
 
 data class Armor(
     @Expose
-    @SerializedName("name") val name: String?,
+    @SerializedName("name") val name: String,
     @Expose
-    @SerializedName("rank") val rank: String?,
+    @SerializedName("rank") val rank: String,
     @Expose
-    @SerializedName("defense") val defense: Defense? = null,
+    @SerializedName("defense") val defense: Defense,
     @Expose
-    @SerializedName("slots") val slots: List<Slots>?,
+    @SerializedName("slots") val slots: ArrayList<Slots>,
     @Expose
-    @SerializedName("type") val type: String?
+    @SerializedName("type") val type: String
 )
 
 data class Defense(
     @Expose
-    @SerializedName("base") val base: String? = null,
+    @SerializedName("base") val base: String,
 )
 
 data class Slots(
     @Expose
-    @SerializedName("rank") val rank: String? = null,
+    @SerializedName("rank") val rank: String,
 )
 
 

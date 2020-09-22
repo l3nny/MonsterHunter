@@ -40,14 +40,10 @@ class ApiListViewHolder constructor(
             Picasso.get().load(R.drawable.ic_legs).fit().placeholder(R.drawable.ic_legs).into(img);
         }
 
-
         for (i in 0 until itemData.slots?.size!!) {
-            var linearLayout: LinearLayout? =
-                DynamicUiContent(dataBinding.root.context).getLinearLayout()
+            var linearLayout: LinearLayout? = DynamicUiContent(dataBinding.root.context).getLinearLayout()
             linearLayout?.addView(DynamicUiContent(dataBinding.root.context).getTextView(itemData.slots[i].rank.toString()))
             tex.addView(linearLayout)
         }
-
-
     }
 }

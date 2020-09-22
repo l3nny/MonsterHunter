@@ -43,8 +43,6 @@ class ListFragment : Fragment() {
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
                   adapter.filter.filter(charSequence.toString())
 
-                 //  adapter.getFilteredList(charSequence.toString())
-
                 }
 
                 override fun afterTextChanged(editable: Editable) {
