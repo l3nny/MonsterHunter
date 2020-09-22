@@ -12,27 +12,33 @@ import kotlinx.android.synthetic.main.list_item.view.*
 
 class ApiListViewHolder constructor(private val dataBinding: ViewDataBinding) : RecyclerView.ViewHolder(dataBinding.root) {
 
-    val img = itemView.item_icon
-    val tex = itemView.item_decor_layout
+    private val img = itemView.item_icon
+    private val tex = itemView.item_decor_layout
 
     fun setup(itemData: Armor) {
 
         dataBinding.setVariable(BR.itemData, itemData)
         dataBinding.executePendingBindings()
 
-        if (itemData.type.equals("head")) {
-            Picasso.get().load(R.drawable.ic_head).fit().placeholder(R.drawable.ic_head).into(img);
-        } else if (itemData.type.equals("waist")) {
-            Picasso.get().load(R.drawable.ic_waist).fit().placeholder(R.drawable.ic_waist)
-                .into(img);
-        } else if (itemData.type.equals("chest")) {
-            Picasso.get().load(R.drawable.ic_chest).fit().placeholder(R.drawable.ic_chest)
-                .into(img);
-        } else if (itemData.type.equals("gloves")) {
-            Picasso.get().load(R.drawable.ic_gloves).fit().placeholder(R.drawable.ic_gloves)
-                .into(img);
-        } else if (itemData.type.equals("legs")) {
-            Picasso.get().load(R.drawable.ic_legs).fit().placeholder(R.drawable.ic_legs).into(img);
+        when (itemData.type) {
+            ("head") -> {
+                Picasso.get().load(R.drawable.ic_head).fit().placeholder(R.drawable.ic_head).into(img);
+            }
+            ("waist") -> {
+                Picasso.get().load(R.drawable.ic_waist).fit().placeholder(R.drawable.ic_waist)
+                    .into(img);
+            }
+            ("chest") -> {
+                Picasso.get().load(R.drawable.ic_chest).fit().placeholder(R.drawable.ic_chest)
+                    .into(img);
+            }
+            ("gloves") -> {
+                Picasso.get().load(R.drawable.ic_gloves).fit().placeholder(R.drawable.ic_gloves)
+                    .into(img);
+            }
+            ("legs") -> {
+                Picasso.get().load(R.drawable.ic_legs).fit().placeholder(R.drawable.ic_legs).into(img);
+            }
         }
 
         for (item in 0 until itemData.slots.size) {

@@ -1,7 +1,5 @@
 package com.yulie.monsterhunter.view.adapter
 
-
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -9,14 +7,14 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.yulie.monsterhunter.databinding.ListItemBinding
 import com.yulie.monsterhunter.service.model.Armor
+import java.util.*
+import kotlin.collections.ArrayList
 
-import com.yulie.monsterhunter.viewmodel.ListViewModel
 
-
-class ApiListAdapter(private val apiListViewModel: ListViewModel) : RecyclerView.Adapter<ApiListViewHolder>(), Filterable {
+class ApiListAdapter() : RecyclerView.Adapter<ApiListViewHolder>(), Filterable {
     var apiList: ArrayList<Armor> = arrayListOf()
     var backUpList: ArrayList<Armor> = arrayListOf()
-    var pro=0;
+    var pro = 0;
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApiListViewHolder {
@@ -44,9 +42,9 @@ class ApiListAdapter(private val apiListViewModel: ListViewModel) : RecyclerView
             private val filterResults = FilterResults()
 
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val filterPattern = constraint.toString().toLowerCase().trim()
+                val filterPattern = constraint.toString().toLowerCase(Locale.ROOT).trim()
 
-                if(pro==0) {
+                if (pro == 0 && apiList.isNotEmpty()) {
                     backUpList.addAll(apiList)
                     pro++
                 }
@@ -56,24 +54,24 @@ class ApiListAdapter(private val apiListViewModel: ListViewModel) : RecyclerView
                     apiList.addAll(backUpList)
                 } else {
                     apiList.filter {
-                        it.name.toLowerCase().contains(filterPattern)
+                        it.name.toLowerCase(Locale.ROOT).contains(filterPattern)
                     }
                 }
                 return filterResults
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                results?.values = if (constraint.isNullOrBlank()){
+                results?.values = if (constraint.isNullOrBlank()) {
                     apiList
                     notifyDataSetChanged()
-                }else {
+                } else {
+                    @Suppress("UNCHECKED_CAST")
                     apiList = filterResults.values as ArrayList<Armor>
                     notifyDataSetChanged()
                 }
             }
         }
     }
-
 
 
 }

@@ -23,7 +23,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/filter_text"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:autofillHints="@string/filter_text"
+            android:inputType="text" />
 
 
         <RelativeLayout

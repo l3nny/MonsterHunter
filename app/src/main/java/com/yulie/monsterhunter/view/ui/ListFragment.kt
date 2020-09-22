@@ -29,21 +29,19 @@ class ListFragment : Fragment() {
 
         viewDataBinding = FragmentListBinding.inflate(inflater, container, false).apply {
             viewmodel = ViewModelProvider(this@ListFragment).get(ListViewModel::class.java)
-            setLifecycleOwner(viewLifecycleOwner)
+            lifecycleOwner = viewLifecycleOwner
 
             filterArmor.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
                 }
                 override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-                  adapter.filter.filter(charSequence.toString())
 
                 }
-
                 override fun afterTextChanged(editable: Editable) {
                     adapter.filter.filter(editable.toString())
+
                 }
             })
-
 
         }
         return viewDataBinding.root
@@ -72,7 +70,7 @@ class ListFragment : Fragment() {
     private fun setupAdapter() {
         val viewModel = viewDataBinding.viewmodel
         if (viewModel != null) {
-            adapter = ApiListAdapter(viewDataBinding.viewmodel!!)
+            adapter = ApiListAdapter()
             val layoutManager = LinearLayoutManager(activity)
             repo_list_rv.layoutManager = layoutManager
             repo_list_rv.addItemDecoration(DividerItemDecoration(activity, layoutManager.orientation))
