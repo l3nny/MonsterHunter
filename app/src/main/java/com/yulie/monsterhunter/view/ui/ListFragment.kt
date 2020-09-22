@@ -46,6 +46,7 @@ class ListFragment : Fragment() {
                 }
 
                 override fun afterTextChanged(editable: Editable) {
+                    adapter.filter.filter(editable.toString())
                 }
             })
 

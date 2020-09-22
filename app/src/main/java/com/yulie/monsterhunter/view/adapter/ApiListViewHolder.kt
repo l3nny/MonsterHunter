@@ -1,5 +1,6 @@
 package com.yulie.monsterhunter.view.adapter
 
+import android.content.Context
 import android.widget.LinearLayout
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
@@ -11,11 +12,7 @@ import com.yulie.monsterhunter.view.dynamicContent.DynamicUiContent
 import com.yulie.monsterhunter.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class ApiListViewHolder constructor(
-    private val dataBinding: ViewDataBinding,
-    private val apiListViewModel: ListViewModel
-) : RecyclerView.ViewHolder(dataBinding.root) {
-
+class ApiListViewHolder constructor(private val dataBinding: ViewDataBinding, private val apiListViewModel: ListViewModel) : RecyclerView.ViewHolder(dataBinding.root) {
 
     val img = itemView.item_icon
     val tex = itemView.item_decor_layout
@@ -40,10 +37,11 @@ class ApiListViewHolder constructor(
             Picasso.get().load(R.drawable.ic_legs).fit().placeholder(R.drawable.ic_legs).into(img);
         }
 
-        for (i in 0 until itemData.slots?.size!!) {
+        for (item in 0 until itemData.slots?.size!!) {
             var linearLayout: LinearLayout? = DynamicUiContent(dataBinding.root.context).getLinearLayout()
-            linearLayout?.addView(DynamicUiContent(dataBinding.root.context).getTextView(itemData.slots[i].rank.toString()))
+            linearLayout?.addView(DynamicUiContent(dataBinding.root.context).getTextView(itemData.slots[item].rank.toString()))
             tex.addView(linearLayout)
         }
     }
 }
+
