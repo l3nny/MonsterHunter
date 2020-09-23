@@ -62,12 +62,10 @@ class ApiListAdapter() : RecyclerView.Adapter<ApiListViewHolder>(), Filterable {
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 results?.values = if (constraint.isNullOrBlank()) {
-                    apiList
-                    notifyDataSetChanged()
+                    updateApiList(apiList)
                 } else {
                     @Suppress("UNCHECKED_CAST")
-                    apiList = filterResults.values as ArrayList<Armor>
-                    notifyDataSetChanged()
+                    updateApiList(filterResults.values as ArrayList<Armor>)
                 }
             }
         }
